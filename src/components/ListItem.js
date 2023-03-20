@@ -1,10 +1,12 @@
 import React from "react";
 
-const ListItem = ({ item }) => {
+const ListItem = ({ taskId, taskTitle, taskState }) => {
   return (
-    <tr>
-      <td>{item.task}</td>
-    </tr>
+    <>
+      <tr>
+        <td>{taskTitle}</td>
+      </tr>
+    </>
   );
 };
 
