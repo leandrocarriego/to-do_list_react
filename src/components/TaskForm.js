@@ -8,7 +8,11 @@ const TaskForm = ({ addTask }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTask(userInput);
+    addTask({
+      id: (+new Date()).toString(),
+      task: userInput,
+      complete: false,
+    });
     setUserInput('');
   }
   
@@ -21,7 +25,7 @@ const TaskForm = ({ addTask }) => {
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicText">
         <Form.Label>Nueva tarea</Form.Label>
-        <Form.Control type="text" placeholder="Escribe aqui tu nueva tarea" value={userInput} onChange={handleOnChange}/>
+        <Form.Control type="text" placeholder="Escribe aqui tu nueva tarea" value={userInput} disabled={userInput ? "" : "disabled"} onChange={handleOnChange}/>
       </Form.Group>
       <Button variant="primary" type="submit">
         Agregar tarea
