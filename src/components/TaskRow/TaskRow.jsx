@@ -8,11 +8,11 @@ const TaskRow = ({ item }) => {
   const dispatch = useDispatch();
 
   const handleComplete = (id) => {
-    dispatch(completeTask(id))
+    dispatch(completeTask(id));
   };
 
   const handleDelete = (id) => {
-    dispatch(deleteTask(id))
+    dispatch(deleteTask(id));
   };
 
   return (
@@ -33,14 +33,8 @@ const TaskRow = ({ item }) => {
           </div>
         </td>
         <td>
-          <Link
-            to={`/edit-task/${item.id}`}
-          >
-            <Button
-              variant="success"
-            >
-              Edit
-            </Button>
+          <Link to={`/edit-task/${item.id}`}>
+            <Button variant="success">Edit</Button>
           </Link>
         </td>
         <td>

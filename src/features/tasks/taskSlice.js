@@ -13,11 +13,11 @@ export const taskSlice = createSlice({
         },
         editTask: (state, action) => {
             const taksToEdit = state.find(task => task.id == action.payload.id)
-            console.log(taksToEdit)
+        
             if (taksToEdit) {
                 taksToEdit.task = action.payload.task
             }
-            console.log(taksToEdit)
+            
         },
 
         deleteTask: (state, action) => {
