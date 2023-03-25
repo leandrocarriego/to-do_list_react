@@ -1,81 +1,33 @@
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "react-bootstrap";
-import Wrapper from "./containers/Wrapper";
-// import { useState, useEffect } from "react";
-// import TaskForm from "./components/TaskForm";
-// import TaskList from "./components/TaskList";
-// import Counter from "./components/Counter";
+import Wrapper from "./components/Wrapper/Wrapper";
+import Home from "./containers/Home/Home";
+import NewTask from "./containers/NewTask/NewTask";
+import NotFound from "./containers/NotFound/NotFound";
+
+
 
 function App() {
-  // const [tasks, setTasks] = useState([]);
-
-  // useEffect(() => {
-  //   let data = localStorage.getItem("tasks");
-  //   if (data) {
-  //     setTasks(JSON.parse(data));
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem("tasks", JSON.stringify(tasks));
-  // }, [ tasks ]);
-
-  // const addTask = (newTask) => {
-  //   !tasks.find((item) => item.task === newTask)
-  //     ? setTasks([
-  //         ...tasks,
-  //         {
-  //           id: 0,
-  //           task: newTask,
-  //           complete: false,
-  //         },
-  //       ])
-  //     : alert("Ya has creado esa tarea");
-  // };
-
-  // const changeTaskState = (taskName) => {
-  //   tasks.map((item) => { if (item.task === taskName) {
-  //     item.complete ? 
-  //     console.log(item.complete)
-        
-  //      : 
-  //       console.log(item.complete)
-  //   }
-  //       });
-    
-      // ? setTasks([
-      //     ...tasks,
-      //     {
-      //       id: 0,
-      //       task: newTask,
-      //       complete: false,
-      //     },
-      //   ])
-      // : alert("Ya has creado esa tarea");
-
-  
 
   return (
-    <div>
-      <ThemeProvider breakpoints={["lg", "md", "sm"]} minBreakpoint="sm">
-        <Wrapper />
-          {/* <Row>
-            <Col>
-              <h1 className="text-center">To-Do App</h1>
-              <h3>Tienes <Counter tasks={tasks} /> tareas pendientes</h3>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <TaskForm addTask={addTask} />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <TaskList tasks={tasks} />
-            </Col>
-          </Row> */}
-      </ThemeProvider>
-    </div>
+    <>
+      <BrowserRouter>
+        <ThemeProvider breakpoints={["lg", "md", "sm"]} minBreakpoint="sm">
+          <Wrapper>
+            <Routes>
+            <Route path="/" element={<Home />} />
+
+              <Route path="/new-task" element={<NewTask />} />
+
+              <Route path="/edit-task/:id" element={<NewTask />} />
+
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Wrapper>
+        </ThemeProvider>
+      </BrowserRouter>
+    </>
   );
 }
 
